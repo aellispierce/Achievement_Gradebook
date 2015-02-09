@@ -3,7 +3,6 @@ class StudentsController < ApplicationController
 
   def index
     @student = Student.all
-    @grades = Grade.all
   end
 
   def new
@@ -11,6 +10,20 @@ class StudentsController < ApplicationController
   end
 
   def edit
+  end
+
+  def achievements
+    @student = Student.find(params[:id])
+    @achievements = Achievement.all
+  end
+
+  def update_achievements
+    @student = Student.find(params[:id])
+    @student.achievements = []
+    params[:achievements].keys.each do |achievement_id|
+      @student.achievements << Achievement.find_by_id(achievement_id)
+    end
+    redirect_to achievements_student_path
   end
 
   def create
