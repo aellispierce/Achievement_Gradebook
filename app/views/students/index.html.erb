@@ -10,6 +10,7 @@
       <th>Achievements</th>
       <% student.achievements.each do |a| %>
       <tr><td><%= a.name %></td></tr>
+      <tr><td><%= student.total_points %></td></tr>
       <% end %>
   </article>
   </tbody>

@@ -38,4 +38,28 @@ class Student < ActiveRecord::Base
     end
     return pair
   end
+
+  def total_points
+    points = 0
+    achievements.each do |a|
+    points += a.points
+    end
+    points
+  end
+
+  def grade(total_points)
+    if total_points <= self.teacher.thresholds.first.f
+      grade= "F"
+    elsif total_points <= self.teacher.thresholds.first.d
+      grade= "D"
+    elsif total_points <= self.teacher.thresholds.first.c
+      grade= "C"
+    elsif total_points <= self.teacher.thresholds.first.b
+      grade= "B"
+    else
+      grade= A
+    end
+    grade
+  end
+
 end

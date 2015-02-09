@@ -1,5 +1,6 @@
 class Teacher < ActiveRecord::Base
   has_secure_password
+  has_many :thresholds
 
   def self.classes
     classes = []
@@ -9,5 +10,9 @@ class Teacher < ActiveRecord::Base
     end
     return classes
   end
+
+
+
+
 
 end

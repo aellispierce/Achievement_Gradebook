@@ -5,7 +5,13 @@
 <table>
   <tbody>
       <% Student.get_all_children_for_teacher_id( session[:teacher_id] ).each do |student| %>
-        <tr><td><%=  link_to student.name, achievements_students_path(student.id)  %></td></tr>
+        <tr><td><%=  link_to student.name.capitalize, achievements_student_path(student.id)  %></td></tr>
+        <th>Achievements</th>
+        <% student.achievements.each do |a| %>
+        <tr><td><%= a.name %></td></tr>
+        <% end %>
+        <tr><td>Total Points <%= student.total_points %></td></tr>
+        <tr><td>Grade <%= student.grade(student.total_points) %></td></tr>
       <% end %>
   </tbody>
 </table>
