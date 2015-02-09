@@ -5,11 +5,15 @@
   <tbody>
     <tr><td>
       <% parent = Parent.find_by_id(session[:parent_id]) %>
-      <%= parent.child_name %></td></tr>
       <% student = Student.find_by(name: parent.child_name ) %>
       <% if student %>
-        <% grade = Grade.get_assignments_for_student_email( student.student_email ) %>
-        <%= display_grades(grade) %>
+      <tr><td>
+        <%= student.name.capitalize %></td></tr>
+        <article>
+          <th>Achievements</th>
+          <% student.achievements.each do |a| %>
+          <tr><td><%= a.name %></td></tr>
+          <% end %>
       <% end %>
     </tr>
   </tbody>

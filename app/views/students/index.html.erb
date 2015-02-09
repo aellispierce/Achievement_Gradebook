@@ -1,18 +1,19 @@
 <h1>Student Dashboard</h1>
-<section>
+
 <table>
   <tbody>
-    <aside>
+    <th>Name</th>
     <tr><td>
       <% student = Student.find_by_id(session[:student_id]) %>
-      <%= student.name %></td></tr>
-    </aside>
+      <%= student.name.capitalize %></td></tr>
     <article>
-    <tr>
-    </tr>
+      <th>Achievements</th>
+      <% student.achievements.each do |a| %>
+      <tr><td><%= a.name %></td></tr>
+      <% end %>
   </article>
   </tbody>
 </table>
-</section>
+
 
 <%= link_to 'Change your password', edit_student_path(Student.find_by(id: session[:student_id] )) %>
