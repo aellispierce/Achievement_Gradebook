@@ -11,6 +11,7 @@
 
 <% if session[:teacher_id] %>
 <%= link_to "Log out", login_logout_path %>
+<%= link_to "Set Achievement Threshold", new_threshold_path %>
 <% elsif session[:student_id] %>
 <%= link_to "Log out", login_logout_path %>
 <% elsif session[:parent_id] %>

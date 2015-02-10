@@ -12,8 +12,10 @@
         <article>
           <th>Achievements</th>
           <% student.achievements.each do |a| %>
-          <tr><td><%= a.name %></td></tr>
+            <tr><td><%= a.name %></td></tr>
           <% end %>
+          <tr><td>Total Points <%= student.total_points %></td></tr>
+          <tr><td>Grade <%= student.grade(student.total_points) %></td></tr>
       <% end %>
     </tr>
   </tbody>
