@@ -1,0 +1,43 @@
+<%= form_for(@threshold) do |f| %>
+<% if @threshold.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@threshold.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+  <ul>
+    <% @threshold.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+<div class="field">
+  <%= f.label :A%><br>
+  <%= f.number_field :A %>
+</div>
+<div class="field">
+  <%= f.label :B%><br>
+  <%= f.number_field :B %>
+</div>
+<div class="field">
+  <%= f.label :C%><br>
+  <%= f.number_field :C %>
+</div>
+<div class="field">
+  <%= f.label :D%><br>
+  <%= f.number_field :D %>
+</div>
+<div class="field">
+  <%= f.label :F%><br>
+  <%= f.number_field :F %>
+</div>
+<div class="field">
+  <%= f.hidden_field :teacher_id, :value => session[:teacher_id]%><br>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<%= link_to 'Delete this item', @threshold, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<% end %>
