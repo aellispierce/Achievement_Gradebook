@@ -1,18 +1,25 @@
 <h1>Teacher Dashboard</h1>
+<p> Click on a Student's name to edit their achievements </p>
 
-<%= link_to 'Create new grade', new_grade_path %><br><br>
-
-<table>
+<table BORDER="5">
   <tbody>
+    <TR>
+      <TH COLSPAN="4">
+          <H3><BR>Students</H3>
+    </TH>
+    </TR>
       <% Student.get_all_children_for_teacher_id( session[:teacher_id] ).each do |student| %>
-        <tr><td><%=  link_to student.name.capitalize, achievements_student_path(student.id)  %></td></tr>
-        <th>Achievements</th>
-        <% student.achievements.each do |a| %>
-          <tr><td><%= a.name %></td></tr>
-        <% end %>
-        <tr><td>Total Points <%= student.total_points %></td></tr>
-        <tr><td>Grade <%= student.grade(student.total_points) %></td></tr>
+        <tr>
+          <th><%=  link_to student.name.capitalize, achievements_student_path(student.id)  %></th>
+          <td><h3>Achievements:</h3>
+          <% student.achievements.each do |a| %>
+            <ul><%= a.name %><ul>
+          <% end %></td>
+          <td><h3>Total Points</h3> <%= student.total_points %></td>
+          <td><h3>Grade</h3> <%= student.grade(student.total_points) %></td>
+        </tr>
       <% end %>
+
   </tbody>
 </table>
 
